@@ -140,7 +140,6 @@
 					"_GLIBCXX_DEBUG=1",
 					"_GLIBCXX_DEBUG_PEDANTIC=1",
 				);
-				INSTALL_PATH = /usr/local/bin;
 				PRODUCT_NAME = ddcctrl;
 			};
 			name = Debug;
@@ -152,7 +151,6 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_IDENTITY = "-";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				INSTALL_PATH = /usr/local/bin;
 				PRODUCT_NAME = ddcctrl;
 			};
 			name = Release;
