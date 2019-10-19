@@ -8,30 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		8DD76F650486A84900D96B5E /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 08FB7796FE84155DC02AAC07 /* main.cpp */; settings = {ATTRIBUTES = (); }; };
-		8DD76F6A0486A84900D96B5E /* ddcctrl.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6859E8B029090EE04C91782 /* ddcctrl.1 */; };
 		FC908703107D0914007A4442 /* libddc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FC908702107D0914007A4442 /* libddc.a */; };
 		FC908A1A107D2580007A4442 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC908A19107D2580007A4442 /* IOKit.framework */; };
 		FC908A23107D2598007A4442 /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC908A22107D2598007A4442 /* ApplicationServices.framework */; };
 		FCAF2A9F109484A800845DA3 /* getopt_pp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FCAF2A9D109484A800845DA3 /* getopt_pp.cpp */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		8DD76F690486A84900D96B5E /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 8;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
-			files = (
-				8DD76F6A0486A84900D96B5E /* ddcctrl.1 in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 1;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
 		08FB7796FE84155DC02AAC07 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		8DD76F6C0486A84900D96B5E /* ddcctrl */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ddcctrl; sourceTree = BUILT_PRODUCTS_DIR; };
-		C6859E8B029090EE04C91782 /* ddcctrl.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = ddcctrl.1; sourceTree = "<group>"; };
 		FC908702107D0914007A4442 /* libddc.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; name = libddc.a; path = /private/tmp/ddc.dst/usr/local/lib/libddc.a; sourceTree = "<absolute>"; };
 		FC908A19107D2580007A4442 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = /System/Library/Frameworks/IOKit.framework; sourceTree = "<absolute>"; };
 		FC908A22107D2598007A4442 /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = /System/Library/Frameworks/ApplicationServices.framework; sourceTree = "<absolute>"; };
@@ -59,7 +44,6 @@
 			children = (
 				FC908702107D0914007A4442 /* libddc.a */,
 				08FB7795FE84155DC02AAC07 /* Source */,
-				C6859E8C029090F304C91782 /* Documentation */,
 				1AB674ADFE9D54B511CA2CBB /* Products */,
 				FC908A19107D2580007A4442 /* IOKit.framework */,
 				FC908A22107D2598007A4442 /* ApplicationServices.framework */,
@@ -86,14 +70,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		C6859E8C029090F304C91782 /* Documentation */ = {
-			isa = PBXGroup;
-			children = (
-				C6859E8B029090EE04C91782 /* ddcctrl.1 */,
-			);
-			name = Documentation;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -103,7 +79,6 @@
 			buildPhases = (
 				8DD76F640486A84900D96B5E /* Sources */,
 				8DD76F660486A84900D96B5E /* Frameworks */,
-				8DD76F690486A84900D96B5E /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -129,9 +104,6 @@
 			hasScannedForEncodings = 1;
 			knownRegions = (
 				English,
-				Japanese,
-				French,
-				German,
 			);
 			mainGroup = 08FB7794FE84155DC02AAC07 /* ddcctrl */;
 			projectDirPath = "";
