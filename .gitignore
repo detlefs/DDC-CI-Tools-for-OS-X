@@ -1,4 +1,5 @@
 .DS_Store
 
-# Xcode User settings
+# Xcode User settings and build directories
 xcuserdata/
+build/
