@@ -58,17 +58,31 @@ int main(int argc, char* argv[]) {
 			
 			if (sscanf(new_value.c_str(), "%d", &new_value_int) == EOF) { std::cerr << "Value needs to be an integer\n"; return 1; }
 			if (sscanf(display.c_str(), "%d", &display_int) == EOF) { std::cerr << "Display needs to be an integer\n"; return 1; }
-						
+            
+            char *hex_pos;
+            hex_pos = strcasestr(control.c_str(),"0x");
+            if (hex_pos) {
+                control_int = (int)strtol(hex_pos, NULL, 16);
+            } else {
+                control_int = (int)strtol(control.c_str(), NULL, 10);
+            }
+            
 			if (set_flag) {
 				if (!(ops >>OptionPresent('c',"control")) || !(ops >> OptionPresent('v',"value")) || !(ops >> OptionPresent('d',"display"))) {
 					std::cerr << "Control,Value and Display need to be specified\n";
 					return 1;
 				}
-				
-			    int result;
+                std::cout << "command:"
+                << "\n  display: "<<display_int
+                << "\n  control: "<<control_int
+                << "\n  value: "<<new_value_int
+                << "\n"
+                ;
+
+                int result;
 				struct DDCWriteCommand write_command;
-				write_command.control_id = atoi(control.c_str());
-				write_command.new_value = new_value_int;
+                write_command.control_id = control_int;
+                write_command.new_value = new_value_int;
 				result = ddc_write(display_int, &write_command);
 				return !result;
 			}
@@ -79,9 +93,15 @@ int main(int argc, char* argv[]) {
 					return 1;
 				}
 				
-				int result;
+                std::cout << "command:"
+                << "\n  display: "<<display_int
+                << "\n  control: "<<control_int
+                << "\n"
+                ;
+
+                int result;
 				struct DDCReadCommand read_command;
-				read_command.control_id = atoi(control.c_str());
+				read_command.control_id = control_int;
 				
 				result = ddc_read(display_int, &read_command);
 				
@@ -112,7 +132,13 @@ int main(int argc, char* argv[]) {
 
 
 void display_help() {
-	std::cout << "Options are blah\n";
+	std::cout << "Usage:\n"
+    << "\t    ddcctrl --get -c <control value> -d <display value>\n"
+    << "\t    ddcctrl --set -c <control value> -d <display value> -v <new value>\n"
+    << "\t    ddcctrl --listdisplays\n"
+    << "\n\n"
+    << "Hint: primary display id="<<primary_display_id()<<"\n"
+    ;
 }
 
 
@@ -159,3 +185,4 @@ int main (int argc, char * const argv[]) {
 }
  
  */
+ 
