@@ -2,6 +2,7 @@ DDC/CI Control for OS X
 =======================
 
 Based on [jontaylor/DDC-CI-Tools-for-OS-X](https://github.com/jontaylor/DDC-CI-Tools-for-OS-X).
+Improved based on [kfix/ddcctl](https://github.com/kfix/ddcctl), which does the same thing.
 
 This is a very rough initial go at hooking in with the Apple API for controlling monitors using DDC/CI.
 
