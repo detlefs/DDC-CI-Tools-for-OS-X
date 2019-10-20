@@ -6,7 +6,11 @@
 
 using namespace GetOpt;
 
+void display_screens();
 void display_help();
+
+uint32_t num_displays = 0;
+struct DDCDisplay *displayList;
 
 int main(int argc, char* argv[]) {
 	
@@ -22,7 +26,7 @@ int main(int argc, char* argv[]) {
 	
 	
 	bool list_displays;
-	
+
 	try
 	{	
 		GetOpt_pp ops(argc, argv);
@@ -41,7 +45,8 @@ int main(int argc, char* argv[]) {
 		>> Option('d', "display", display, "0")
 		;
 		
-		
+        displayList = DDCGetDisplayList(&num_displays);
+
 		if (!ops.options_remain())
 		{
 			if ((help_flag) or ((set_flag+get_flag+list_displays) == 0) ) {
@@ -59,12 +64,23 @@ int main(int argc, char* argv[]) {
 			if (sscanf(new_value.c_str(), "%d", &new_value_int) == EOF) { std::cerr << "Value needs to be an integer\n"; return 1; }
 			if (sscanf(display.c_str(), "%d", &display_int) == EOF) { std::cerr << "Display needs to be an integer\n"; return 1; }
             
+            if (display_int < 0 || display_int >= num_displays || displayList[display_int].is_builtin) {
+                std::cerr << "Display must be a valid entry";
+                display_screens();
+                return 1;
+            }
+            
             char *hex_pos;
             hex_pos = strcasestr(control.c_str(),"0x");
             if (hex_pos) {
                 control_int = (int)strtol(hex_pos, NULL, 16);
             } else {
                 control_int = (int)strtol(control.c_str(), NULL, 10);
+            }
+            
+            if (list_displays) {
+                display_screens();
+                return 0;
             }
             
 			if (set_flag) {
@@ -83,7 +99,7 @@ int main(int argc, char* argv[]) {
 				struct DDCWriteCommand write_command;
                 write_command.control_id = control_int;
                 write_command.new_value = new_value_int;
-				result = ddc_write(display_int, &write_command);
+				result = DDCWrite(displayList[display_int].display_id, &write_command);
 				return !result;
 			}
 			
@@ -103,10 +119,11 @@ int main(int argc, char* argv[]) {
 				struct DDCReadCommand read_command;
 				read_command.control_id = control_int;
 				
-				result = ddc_read(display_int, &read_command);
-				
-				std::cout << "Current Value: " << (int)read_command.response.current_value << "\n";
-				std::cout << "Maximum Value: " << (int)read_command.response.max_value << "\n";
+                result = DDCRead(displayList[display_int].display_id, &read_command);
+
+                std::cout << "Success: " << (int)read_command.success << "\n";
+                std::cout << "Current Value: " << (int)read_command.current_value << "\n";
+				std::cout << "Maximum Value: " << (int)read_command.max_value << "\n";
 				
 			}
 			
@@ -130,6 +147,19 @@ int main(int argc, char* argv[]) {
 	return 0;
 }
 
+void display_screens() {
+    std::cout << num_displays << " displays found:\n";
+    for(int i = 0; i < num_displays; i++)
+    {
+        std::cout << "\t#" << i
+        << " " << (displayList[i].name[0] ? displayList[i].name : "")
+        <<" (" <<displayList[i].width<<"x"<<displayList[i].height
+        <<(displayList[i].is_main ? " main" : "")
+        <<(displayList[i].is_builtin ? " builtin: not usable" : "")
+        <<")\n";
+    }
+}
+
 
 void display_help() {
 	std::cout << "Usage:\n"
@@ -137,52 +167,6 @@ void display_help() {
     << "\t    ddcctrl --set -c <control value> -d <display value> -v <new value>\n"
     << "\t    ddcctrl --listdisplays\n"
     << "\n\n"
-    << "Hint: primary display id="<<primary_display_id()<<"\n"
     ;
+    display_screens();
 }
-
-
-/*
-int main (int argc, char * const argv[]) {
-    // insert code here...
-    //std::cout << "Hello, World!\n";
-	
-	int i;
-	
-	//std::cout << primary_display_id();
-	//printf("<#message#>");
-	struct DDCWriteCommand write_command;
-	
-	
-	struct DDCReadCommand read_command;
-	//p_write_command = &write_command;
-	
-	
-	write_command.control_id = 0x60;
-	write_command.new_value = 0x05;
-	//write_command.new_value = 0x01;
-	
-	//printf("<#message#>");
-	i = ddc_write(1, &write_command);
-
-	
-	//read_command.control_id = 0x10;
-	
-	//i = ddc_read(1, &read_command); 
-	
-	//edid_test(0);
-	
-	//printf("\nend\n");
-	
-	//printf(read_command.reply_buffer);
-	
-    //IOI2CConnectRef connection;
-	
-	//connection = display_connection(0);
-	//IOI2CInterfaceClose( connection, kNilOptions );
-	
-    return 0;
-}
- 
- */
- 
