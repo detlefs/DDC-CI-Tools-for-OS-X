@@ -7,6 +7,7 @@
 //
 
 #import "ddcguiAppDelegate.h"
+#import "controller.h"
 
 @implementation ddcguiAppDelegate
 
