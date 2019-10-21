@@ -7,4 +7,7 @@
    <FileRef
       location = "group:ddcctrl/ddcctrl.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:ddcgui/ddcgui.xcodeproj">
+   </FileRef>
 </Workspace>
