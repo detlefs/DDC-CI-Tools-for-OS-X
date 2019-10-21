@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:ddc-swift/ddc-swift.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:ddc/ddc.xcodeproj">
    </FileRef>
    <FileRef
