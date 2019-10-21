@@ -8,7 +8,17 @@
 #import "controller.h"
 #import "ddc.h"
 
+uint32_t num_displays = 0;
+struct DDCDisplay *displayList;
+
 @implementation controller
+
+- (instancetype)init {
+    if (self = [super init]) {
+        displayList = DDCGetDisplayList(&num_displays);
+    }
+    return self;
+}
 
 - (void)setControlAndUpdateLabel:(int)control :(id)slider :(id)label {
 	//[label takeIntValueFrom: slider];
@@ -28,16 +38,16 @@
 	struct DDCWriteCommand write_command;                                                         
 	write_command.control_id = control;
 	write_command.new_value = value;
-	ddc_write(0, &write_command);
+    DDCWrite(displayList[0].display_id, &write_command);
 }
 
 
 - (int)readControlValue:(int)control {
 	struct DDCReadCommand read_command;
 	read_command.control_id = control;
-    
-	ddc_read(0, &read_command);
-	return ((int)read_command.response.current_value);
+
+	DDCRead(displayList[0].display_id, &read_command);
+	return ((int)read_command.current_value);
 }
 
 - (void)setControlsToCurrentValues{
