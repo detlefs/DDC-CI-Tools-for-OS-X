@@ -38,10 +38,8 @@
 			isa = PBXGroup;
 			children = (
 				08FB7795FE84155DC02AAC07 /* Source */,
-				C6A0FF2B0290797F04C91782 /* Documentation */,
+				1714324E235D8E7000EEAF03 /* Frameworks */,
 				1AB674ADFE9D54B511CA2CBB /* Products */,
-				FC90871E107D0CA8007A4442 /* IOKit.framework */,
-				FC908917107D24BC007A4442 /* ApplicationServices.framework */,
 			);
 			name = ddc;
 			sourceTree = "<group>";
@@ -55,19 +53,21 @@
 			name = Source;
 			sourceTree = "<group>";
 		};
+		1714324E235D8E7000EEAF03 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FC908917107D24BC007A4442 /* ApplicationServices.framework */,
+				FC90871E107D0CA8007A4442 /* IOKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		1AB674ADFE9D54B511CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
 				D2AAC046055464E500DB518D /* libddc.a */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		C6A0FF2B0290797F04C91782 /* Documentation */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Documentation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
