@@ -81,21 +81,21 @@
         <window title="DDC/CI Control" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="371">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="701" y="467" width="485" height="353"/>
+            <rect key="contentRect" x="701" y="467" width="676" height="135"/>
             <rect key="screenRect" x="0.0" y="0.0" width="3200" height="1310"/>
             <view key="contentView" id="372">
-                <rect key="frame" x="0.0" y="0.0" width="485" height="353"/>
+                <rect key="frame" x="0.0" y="0.0" width="676" height="135"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="533">
-                        <rect key="frame" x="91" y="311" width="341" height="24"/>
-                        <sliderCell key="cell" continuous="YES" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="below" numberOfTickMarks="101" allowsTickMarkValuesOnly="YES" sliderType="linear" id="534"/>
+                        <rect key="frame" x="91" y="93" width="535" height="24"/>
+                        <sliderCell key="cell" continuous="YES" alignment="left" maxValue="100" doubleValue="62" tickMarkPosition="below" numberOfTickMarks="101" allowsTickMarkValuesOnly="YES" sliderType="linear" id="534"/>
                         <connections>
                             <action selector="setBrightness:" target="539" id="552"/>
                         </connections>
                     </slider>
                     <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="535">
-                        <rect key="frame" x="18" y="317" width="69" height="16"/>
+                        <rect key="frame" x="18" y="99" width="69" height="16"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Brightness" id="536">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -103,30 +103,33 @@
                         </textFieldCell>
                     </textField>
                     <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="537" userLabel="brightnessValueLabel">
-                        <rect key="frame" x="436" y="317" width="31" height="16"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="50%" id="538" userLabel="brightnessLabel">
+                        <rect key="frame" x="630" y="99" width="28" height="16"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="24" id="Kha-BR-KyP"/>
+                        </constraints>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="255" id="538" userLabel="brightnessLabel">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
                     <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="564">
-                        <rect key="frame" x="91" y="281" width="341" height="24"/>
+                        <rect key="frame" x="91" y="63" width="535" height="24"/>
                         <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="below" numberOfTickMarks="101" allowsTickMarkValuesOnly="YES" sliderType="linear" id="565"/>
                         <connections>
                             <action selector="setContrast:" target="539" id="570"/>
                         </connections>
                     </slider>
                     <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="566">
-                        <rect key="frame" x="436" y="287" width="31" height="16"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="50%" id="567">
+                        <rect key="frame" x="630" y="69" width="28" height="16"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="255" id="567">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
                     <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="562">
-                        <rect key="frame" x="18" y="287" width="69" height="16"/>
+                        <rect key="frame" x="18" y="69" width="69" height="16"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Contrast" id="563">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -135,9 +138,11 @@
                     </textField>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="537" firstAttribute="leading" secondItem="533" secondAttribute="trailing" constant="8" id="1tw-Ar-z1c"/>
                     <constraint firstItem="564" firstAttribute="leading" secondItem="562" secondAttribute="trailing" constant="8" id="2kw-xB-SXE"/>
                     <constraint firstItem="533" firstAttribute="top" secondItem="535" secondAttribute="top" id="4U2-4O-kFo"/>
                     <constraint firstAttribute="trailing" secondItem="537" secondAttribute="trailing" constant="20" id="Dhr-Fl-23N"/>
+                    <constraint firstItem="566" firstAttribute="width" secondItem="537" secondAttribute="width" id="Ds3-zm-t2a"/>
                     <constraint firstItem="564" firstAttribute="width" secondItem="533" secondAttribute="width" id="EkF-e4-OSz"/>
                     <constraint firstItem="535" firstAttribute="leading" secondItem="372" secondAttribute="leading" constant="20" id="HQW-1w-HES"/>
                     <constraint firstItem="564" firstAttribute="leading" secondItem="533" secondAttribute="leading" id="ICg-WF-6W4"/>
@@ -154,7 +159,7 @@
                     <constraint firstAttribute="trailing" secondItem="566" secondAttribute="trailing" constant="20" id="zkD-rx-5Rr"/>
                 </constraints>
             </view>
-            <point key="canvasLocation" x="138.5" y="180.5"/>
+            <point key="canvasLocation" x="234" y="71.5"/>
         </window>
         <customObject id="494" customClass="ddcguiAppDelegate">
             <connections>
