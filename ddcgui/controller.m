@@ -74,4 +74,10 @@ struct DDCDisplay *displayList;
 	
 }
 
+- (IBAction)resetBrigthnessAndContrast:(id)sender {
+    [self setControlValue:RESET_BRIGHTNESS_AND_CONTRAST :1];
+
+    [self setControlsToCurrentValues];
+}
+
 @end
