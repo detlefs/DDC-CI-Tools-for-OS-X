@@ -61,17 +61,22 @@ struct DDCDisplay *displayList;
 	[self setSliderValue:contrastSlider :contrast_value];
 	[self setLabelValue:contrastValueLabel :contrast_value];
 	
-	
+    //Volume
+    int volume_value = [self readControlValue:0x62];
+    [self setSliderValue:volumeSlider :volume_value];
+    [self setLabelValue:volumeValueLabel :volume_value];
 }
 
 - (IBAction)setBrightness:(id)sender {
 	[self setControlAndUpdateLabel:0x10 :sender :brightnessValueLabel];
-	
 }
 
 - (IBAction)setContrast:(id)sender {
 	[self setControlAndUpdateLabel:0x12 :sender :contrastValueLabel];
-	
+}
+
+- (IBAction)setVolume:(id)sender {
+    [self setControlAndUpdateLabel:0x62 :sender :volumeValueLabel];
 }
 
 - (IBAction)resetBrigthnessAndContrast:(id)sender {

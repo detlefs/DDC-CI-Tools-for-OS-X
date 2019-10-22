@@ -81,21 +81,21 @@
         <window title="DDC/CI Control" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="371">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="701" y="467" width="676" height="135"/>
+            <rect key="contentRect" x="701" y="467" width="676" height="216"/>
             <rect key="screenRect" x="0.0" y="0.0" width="3200" height="1310"/>
             <view key="contentView" id="372">
-                <rect key="frame" x="0.0" y="0.0" width="676" height="135"/>
+                <rect key="frame" x="0.0" y="0.0" width="676" height="216"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="533">
-                        <rect key="frame" x="91" y="93" width="535" height="24"/>
+                        <rect key="frame" x="91" y="174" width="535" height="24"/>
                         <sliderCell key="cell" continuous="YES" alignment="left" maxValue="100" doubleValue="62" tickMarkPosition="below" numberOfTickMarks="101" allowsTickMarkValuesOnly="YES" sliderType="linear" id="534"/>
                         <connections>
                             <action selector="setBrightness:" target="539" id="552"/>
                         </connections>
                     </slider>
                     <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="535">
-                        <rect key="frame" x="18" y="99" width="69" height="16"/>
+                        <rect key="frame" x="18" y="180" width="69" height="16"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Brightness" id="536">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -103,7 +103,7 @@
                         </textFieldCell>
                     </textField>
                     <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="537" userLabel="brightnessValueLabel">
-                        <rect key="frame" x="630" y="99" width="28" height="16"/>
+                        <rect key="frame" x="630" y="180" width="28" height="16"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="24" id="Kha-BR-KyP"/>
                         </constraints>
@@ -114,14 +114,14 @@
                         </textFieldCell>
                     </textField>
                     <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="564">
-                        <rect key="frame" x="91" y="63" width="535" height="24"/>
+                        <rect key="frame" x="91" y="144" width="535" height="24"/>
                         <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="below" numberOfTickMarks="101" allowsTickMarkValuesOnly="YES" sliderType="linear" id="565"/>
                         <connections>
                             <action selector="setContrast:" target="539" id="570"/>
                         </connections>
                     </slider>
                     <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="566">
-                        <rect key="frame" x="630" y="69" width="28" height="16"/>
+                        <rect key="frame" x="630" y="150" width="28" height="16"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="255" id="567">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -129,16 +129,15 @@
                         </textFieldCell>
                     </textField>
                     <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="562">
-                        <rect key="frame" x="18" y="69" width="69" height="16"/>
+                        <rect key="frame" x="18" y="150" width="69" height="16"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Contrast" id="563">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lcN-Wm-B2o">
-                        <rect key="frame" x="321" y="16" width="75" height="32"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lcN-Wm-B2o">
+                        <rect key="frame" x="301" y="97" width="75" height="32"/>
                         <buttonCell key="cell" type="push" title="Reset" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="9f5-D0-gu8">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -147,30 +146,67 @@
                             <action selector="resetBrigthnessAndContrast:" target="539" id="4Ug-1y-QEW"/>
                         </connections>
                     </button>
+                    <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kMR-95-3ik" userLabel="Volume Slider">
+                        <rect key="frame" x="91" y="18" width="535" height="24"/>
+                        <sliderCell key="cell" continuous="YES" alignment="left" maxValue="100" doubleValue="10" tickMarkPosition="below" numberOfTickMarks="101" allowsTickMarkValuesOnly="YES" sliderType="linear" id="dQc-7d-QOe"/>
+                        <connections>
+                            <action selector="setVolume:" target="539" id="WIu-sa-W4u"/>
+                        </connections>
+                    </slider>
+                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="MX7-5M-Af7" userLabel="Volume Value Label">
+                        <rect key="frame" x="630" y="24" width="28" height="16"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="255" id="sAO-Tf-Dkr">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="LYC-NQ-IvL">
+                        <rect key="frame" x="18" y="24" width="69" height="16"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Volume" id="JlU-CN-GMY">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="MX7-5M-Af7" firstAttribute="width" secondItem="537" secondAttribute="width" id="00H-QZ-SjG"/>
                     <constraint firstItem="537" firstAttribute="leading" secondItem="533" secondAttribute="trailing" constant="8" id="1tw-Ar-z1c"/>
-                    <constraint firstItem="564" firstAttribute="leading" secondItem="562" secondAttribute="trailing" constant="8" id="2kw-xB-SXE"/>
                     <constraint firstItem="533" firstAttribute="top" secondItem="535" secondAttribute="top" id="4U2-4O-kFo"/>
+                    <constraint firstItem="566" firstAttribute="leading" secondItem="537" secondAttribute="leading" id="6DF-IZ-UKU"/>
+                    <constraint firstItem="kMR-95-3ik" firstAttribute="top" secondItem="MX7-5M-Af7" secondAttribute="top" id="7Of-4J-p3T"/>
+                    <constraint firstItem="564" firstAttribute="leading" secondItem="562" secondAttribute="trailing" constant="8" id="8La-Ai-3mE"/>
+                    <constraint firstItem="kMR-95-3ik" firstAttribute="leading" secondItem="533" secondAttribute="leading" id="8ds-tE-lT7"/>
+                    <constraint firstItem="kMR-95-3ik" firstAttribute="trailing" secondItem="533" secondAttribute="trailing" id="9Nl-6r-ZZs"/>
                     <constraint firstAttribute="trailing" secondItem="537" secondAttribute="trailing" constant="20" id="Dhr-Fl-23N"/>
                     <constraint firstItem="566" firstAttribute="width" secondItem="537" secondAttribute="width" id="Ds3-zm-t2a"/>
-                    <constraint firstItem="564" firstAttribute="width" secondItem="533" secondAttribute="width" id="EkF-e4-OSz"/>
+                    <constraint firstItem="564" firstAttribute="trailing" secondItem="533" secondAttribute="trailing" id="Gmy-yc-Soe"/>
                     <constraint firstItem="535" firstAttribute="leading" secondItem="372" secondAttribute="leading" constant="20" id="HQW-1w-HES"/>
                     <constraint firstItem="564" firstAttribute="leading" secondItem="533" secondAttribute="leading" id="ICg-WF-6W4"/>
                     <constraint firstItem="537" firstAttribute="leading" secondItem="533" secondAttribute="trailing" constant="8" symbolic="YES" id="Klk-R6-qnT"/>
                     <constraint firstItem="562" firstAttribute="firstBaseline" secondItem="535" secondAttribute="baseline" constant="30" id="LDt-1Y-zkD"/>
+                    <constraint firstItem="566" firstAttribute="firstBaseline" secondItem="562" secondAttribute="firstBaseline" id="Lj6-5E-dZI"/>
                     <constraint firstItem="562" firstAttribute="leading" secondItem="535" secondAttribute="leading" id="OCx-VT-WgY"/>
                     <constraint firstItem="537" firstAttribute="firstBaseline" secondItem="535" secondAttribute="firstBaseline" id="Tc8-Bz-aFr"/>
+                    <constraint firstItem="LYC-NQ-IvL" firstAttribute="top" secondItem="kMR-95-3ik" secondAttribute="top" id="UP4-o3-Vve"/>
+                    <constraint firstItem="LYC-NQ-IvL" firstAttribute="firstBaseline" secondItem="MX7-5M-Af7" secondAttribute="firstBaseline" id="VyU-JQ-E9l"/>
+                    <constraint firstAttribute="trailing" secondItem="566" secondAttribute="trailing" constant="20" id="YQo-Cl-zol"/>
+                    <constraint firstItem="lcN-Wm-B2o" firstAttribute="top" secondItem="564" secondAttribute="bottom" constant="20" id="dAT-on-JXL"/>
+                    <constraint firstItem="kMR-95-3ik" firstAttribute="leading" secondItem="LYC-NQ-IvL" secondAttribute="trailing" constant="8" id="dRy-XP-NbT"/>
                     <constraint firstItem="564" firstAttribute="top" secondItem="562" secondAttribute="top" id="fdg-H3-bTV"/>
+                    <constraint firstItem="lcN-Wm-B2o" firstAttribute="centerX" secondItem="372" secondAttribute="centerX" id="gdc-hT-uB7"/>
                     <constraint firstItem="566" firstAttribute="firstBaseline" secondItem="537" secondAttribute="baseline" constant="30" id="jv4-ns-Vuz"/>
+                    <constraint firstAttribute="bottom" secondItem="LYC-NQ-IvL" secondAttribute="bottom" constant="24" id="kK7-aP-lIv"/>
                     <constraint firstItem="533" firstAttribute="leading" secondItem="535" secondAttribute="trailing" constant="8" symbolic="YES" id="kXp-7n-Zu0"/>
-                    <constraint firstItem="566" firstAttribute="leading" secondItem="564" secondAttribute="trailing" constant="8" id="rhc-Nr-0f9"/>
+                    <constraint firstItem="MX7-5M-Af7" firstAttribute="leading" secondItem="kMR-95-3ik" secondAttribute="trailing" constant="8" id="spx-cj-qKC"/>
+                    <constraint firstAttribute="trailing" secondItem="MX7-5M-Af7" secondAttribute="trailing" constant="20" id="tA8-LM-HwU"/>
+                    <constraint firstItem="LYC-NQ-IvL" firstAttribute="leading" secondItem="535" secondAttribute="leading" id="v83-0l-NkU"/>
                     <constraint firstItem="562" firstAttribute="width" secondItem="535" secondAttribute="width" id="vCT-p6-ucy"/>
                     <constraint firstItem="535" firstAttribute="top" secondItem="372" secondAttribute="top" constant="20" id="w1Z-UP-CY9"/>
-                    <constraint firstAttribute="trailing" secondItem="566" secondAttribute="trailing" constant="20" id="zkD-rx-5Rr"/>
                 </constraints>
             </view>
-            <point key="canvasLocation" x="234" y="71.5"/>
+            <point key="canvasLocation" x="234" y="112"/>
         </window>
         <customObject id="494" customClass="ddcguiAppDelegate">
             <connections>
@@ -185,6 +221,8 @@
                 <outlet property="brightnessValueLabel" destination="537" id="550"/>
                 <outlet property="contrastSlider" destination="564" id="568"/>
                 <outlet property="contrastValueLabel" destination="566" id="569"/>
+                <outlet property="volumeSlider" destination="kMR-95-3ik" id="RIY-wG-XG1"/>
+                <outlet property="volumeValueLabel" destination="MX7-5M-Af7" id="Dhg-aD-tRP"/>
             </connections>
         </customObject>
     </objects>

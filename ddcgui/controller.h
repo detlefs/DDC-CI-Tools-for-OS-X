@@ -12,10 +12,12 @@
     IBOutlet id brightnessSlider;
 	IBOutlet id contrastValueLabel;
     IBOutlet id contrastSlider;
-	
+    IBOutlet id volumeValueLabel;
+    IBOutlet id volumeSlider;
 }
 - (IBAction)setBrightness:(id)sender;
 - (IBAction)setContrast:(id)sender;
+- (IBAction)setVolume:(id)sender;
 - (void)setControlAndUpdateLabel:(int)control :(id)slider :(id)label;
 - (void)setControlsToCurrentValues;
 - (int)readControlValue:(int)control;
