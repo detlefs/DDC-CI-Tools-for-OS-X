@@ -592,7 +592,8 @@ for descriptor in [edid.descriptors.0, edid.descriptors.1, edid.descriptors.2, e
         descriptor.text.data.9,
         descriptor.text.data.10,
         descriptor.text.data.11,
-        descriptor.text.data.12
+        descriptor.text.data.12,
+        0
     ]
     print("descriptor text = \(String(cString: &descriptorText))")
 }
