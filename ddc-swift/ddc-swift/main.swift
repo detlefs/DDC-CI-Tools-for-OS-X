@@ -499,6 +499,39 @@ func DDCWrite(displayID: CGDirectDisplayID, write: inout DDCWriteCommand) -> Boo
     return result
 }
 
+// ------------------------------------------------------------------
+func EDIDTest(displayID: CGDirectDisplayID, edid: inout EDID) -> Bool {
+
+    // Allocate data memory
+    var data = [UInt8](repeating: 0, count: 128)
+
+    var request = IOI2CRequest()
+
+    request.commFlags           = 0
+
+    request.sendAddress         = 0xA0
+    request.sendTransactionType = IOOptionBits(kIOI2CSimpleTransactionType)
+    request.sendBuffer          = vm_address_t(bitPattern: OpaquePointer(data))
+    request.sendBytes           = 1
+    data[0] = 0x00
+    request.replyTransactionType = IOOptionBits(kIOI2CSimpleTransactionType)
+    request.replyAddress         = 0xA1 // Destination address: Host
+    request.replyBuffer          = vm_address_t(bitPattern: OpaquePointer(data))
+    request.replyBytes           = 128
+
+    // Send I2C request
+    let result = DisplayRequest(displayID: displayID, request: &request)
+    
+    if !result {
+        print("Error while requesting EDID")
+        return false
+    }
+    
+    memcpy(&edid, &data, 128)
+    
+    return result
+}
+
 
 // ------------------------------------------------------------------
 print("Scanning for Monitors")
@@ -520,3 +553,62 @@ print("------------------------------------\n-- DDCRead")
 var read = DDCReadCommand(control: .LUMINANCE)
 result = DDCRead(displayID: displays[0].displayID, read: &read)
 print("DDCRead: result=\(result) success=\(read.success) current_value=\(read.current_value) max_value=\(read.max_value)")
+
+print("------------------------------------\n-- EDIDTest")
+var edid = EDID()
+//var read = DDCReadCommand(control: .LUMINANCE)
+result = EDIDTest(displayID: displays[0].displayID, edid: &edid)
+print("EDIDTest: result=\(result)")
+print("manufacturer = \(edid.eisaid)")
+print("productcode = \(edid.productcode)")
+print("serial = \(edid.serial)")
+print("week = \(edid.week)")
+print("year = \(Int(edid.year)+1990)")
+print("EDID version = \(edid.versionmajor).\(edid.versionminor)")
+print("videoinput.type = \(edid.videoinput.digital.type)")
+print("videoinput.bitdepth = \(edid.videoinput.digital.bitdepth)")
+print("videoinput.interface = \(edid.videoinput.digital.interface)")
+print("maxh = \(edid.maxh) cm")
+print("maxv = \(edid.maxv) cm")
+print("gamma = \(edid.gamma)")
+print("standby = \(edid.standby)")
+print("suspend = \(edid.suspend)")
+print("activeoff = \(edid.activeoff)")
+print("displaytype = \(edid.displaytype)")
+print("srgb = \(edid.srgb)")
+
+for descriptor in [edid.descriptors.0, edid.descriptors.1, edid.descriptors.2, edid.descriptors.3] {
+    print("descriptor type = \(descriptor.text.type)")
+    var descriptorText : [Int8] = [
+        descriptor.text.data.0,
+        descriptor.text.data.1,
+        descriptor.text.data.2,
+        descriptor.text.data.3,
+        descriptor.text.data.4,
+        descriptor.text.data.5,
+        descriptor.text.data.6,
+        descriptor.text.data.7,
+        descriptor.text.data.8,
+        descriptor.text.data.9,
+        descriptor.text.data.10,
+        descriptor.text.data.11,
+        descriptor.text.data.12
+    ]
+    print("descriptor text = \(String(cString: &descriptorText))")
+}
+
+//for (union descriptor *des = edid.descriptors; des < edid.descriptors + sizeof(edid.descriptors); des++) {
+//    switch (des->text.type)
+//    {
+//        case 0xFF:
+//            strncpy(&displays[i].serial[0], des->text.data, 12);
+//            displays[i].serial[12] = 0;
+//            break;
+//        case 0xFC:
+//            strncpy(&displays[i].name[0], des->text.data, 12);
+//            displays[i].name[12] = 0;
+//            break;
+//    }
+//}
+
+
