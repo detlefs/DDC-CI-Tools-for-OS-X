@@ -14,6 +14,13 @@
     IBOutlet id contrastSlider;
     IBOutlet id volumeValueLabel;
     IBOutlet id volumeSlider;
+    
+    IBOutlet NSButton *radioButtonDP1;
+    IBOutlet NSButton *radioButtonDP2;
+    IBOutlet NSButton *radioButtonHDMI1;
+    IBOutlet NSButton *radioButtonHDMI2;
+    IBOutlet NSButton *radioButtonUSBC;
+
 }
 - (IBAction)setBrightness:(id)sender;
 - (IBAction)setContrast:(id)sender;

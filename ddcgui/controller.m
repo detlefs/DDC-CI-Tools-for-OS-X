@@ -65,6 +65,33 @@ struct DDCDisplay *displayList;
     int volume_value = [self readControlValue:0x62];
     [self setSliderValue:volumeSlider :volume_value];
     [self setLabelValue:volumeValueLabel :volume_value];
+
+    // Input Source
+    int input_source = [self readControlValue:INPUT_SOURCE];
+    switch (input_source) {
+        case 0x0F:
+            [radioButtonDP1 setState: NSControlStateValueOn];
+            break;
+        case 0x10:
+            [radioButtonDP2 setState: NSControlStateValueOn];
+            break;
+        case 0x11:
+            [radioButtonHDMI1 setState: NSControlStateValueOn];
+            break;
+        case 0x12:
+            [radioButtonHDMI2 setState: NSControlStateValueOn];
+            break;
+        case 0x1B:
+            [radioButtonUSBC setState: NSControlStateValueOn];
+            break;
+            
+        default:
+            break;
+    }
+}
+
+- (IBAction)refreshClicked:(id)sender {
+    [self setControlsToCurrentValues];
 }
 
 - (IBAction)setBrightness:(id)sender {
@@ -83,6 +110,30 @@ struct DDCDisplay *displayList;
     [self setControlValue:RESET_BRIGHTNESS_AND_CONTRAST :1];
 
     [self setControlsToCurrentValues];
+}
+
+- (IBAction)selectInputSource:(NSButton *)sender {
+    
+    int target_source = -1;
+    if (sender == radioButtonDP1) {
+        target_source = 0x0F;
+    }
+    else if (sender == radioButtonDP2) {
+        target_source = 0x10;
+    }
+    else if (sender == radioButtonHDMI1) {
+        target_source = 0x11;
+    }
+    else if (sender == radioButtonHDMI2) {
+        target_source = 0x12;
+    }
+    else if (sender == radioButtonUSBC) {
+        target_source = 0x1B;
+    }
+
+    if (target_source != -1) {
+        [self setControlValue:INPUT_SOURCE :target_source];
+    }
 }
 
 @end
